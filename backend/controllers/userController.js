@@ -49,6 +49,14 @@ export const signup = async (req, res) => {
 // @desc    signin
 // @route   POST /api/users/login
 export const signin = async (req, res) => {
+	const headers = {
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+		'Access-Control-Max-Age': 2592000, // 30 days
+		/** add other headers as per requirement */
+		'Content-Type': 'application/json',
+		'Access-Control-Allow-Headers': 'X-Requested-With',
+	};
 	try {
 		const body = await getPostData(req);
 		const { username, password } = JSON.parse(body);
@@ -69,7 +77,7 @@ export const signin = async (req, res) => {
 					);
 
 					delete rows[0].password;
-					res.writeHead(200, { 'Content-Type': 'application/json' });
+					res.writeHead(200, headers);
 					return res.end(
 						JSON.stringify({
 							token,
@@ -95,7 +103,8 @@ export const signin = async (req, res) => {
 // GET All registered users
 export const getAllUsers = async (req, res) => {
 	const body = await getPostData(req);
-	const { username } = JSON.parse(body);
+	// const { username } = JSON.parse(body);
+	const username = 'test2';
 	try {
 		const users = await User.findAll(username);
 

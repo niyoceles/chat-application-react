@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { Link } from 'react-router-dom';
 import './users.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../redux/actions';
 
 const Users = () => {
-	const usersList = [
-		{ id: 1, username: 'celestin' },
-		{ id: 2, username: 'pascal' },
-	];
+	const usersList = useSelector(state => state.chat.allUsers);
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getUsers());
+	}, [dispatch]);
+
 	return (
 		<div className='cover-container'>
 			<div className='container'>
