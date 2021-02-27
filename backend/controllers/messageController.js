@@ -1,16 +1,16 @@
 import Message from '../models/messageModel';
 import { getPostData } from '../utils';
 
-// @desc    Create a Message
-// @route   POST /api/message
-export const createMessage = async (req, res) => {
+// @desc    Send message
+// @route   POST /api/messages
+export const sendMessage = async (req, res) => {
 	try {
 		const body = await getPostData(req);
 
 		const { sender, receiver, message } = JSON.parse(body);
 		const values = [sender, receiver, message];
 
-		const newMessage = await Message.create(values);
+		const newMessage = await Message.createMessage(values);
 		if (newMessage.rows.length > 0) {
 			res.writeHead(201, { 'Content-Type': 'application/json' });
 			return res.end(JSON.stringify(newMessage.rows[0]));
@@ -20,10 +20,13 @@ export const createMessage = async (req, res) => {
 	}
 };
 
-// GET All messages
-export const getAllMessages = async (req, res) => {
+// GET All my messages
+export const getMyChats = async (req, res) => {
+	const body = await getPostData(req);
+
+	const { sender, receiver } = JSON.parse(body);
 	try {
-		const messages = await Message.findAll();
+		const messages = await Message.findMyChat(sender, receiver);
 
 		if (messages.rows.length > 0) {
 			messages.rows[0].createdAt = new Date(
@@ -41,8 +44,8 @@ export const getAllMessages = async (req, res) => {
 };
 
 const exp = {
-	createMessage,
-	getAllMessages,
+	sendMessage,
+	getMyChats,
 };
 
 export default exp;

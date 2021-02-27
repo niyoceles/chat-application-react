@@ -1,13 +1,22 @@
-import db from './index';
+import db from '../config';
 
-const findAll = () => {
-	const checkAllMessages = db.query(`SELECT * FROM users`);
+export const findAll = username => {
+	const users = db.query('SELECT * FROM users WHERE username!=$1', [username]);
 	return new Promise((resolve, reject) => {
-		resolve(checkAllMessages);
+		resolve(users);
 	});
 };
 
-const create = values => {
+export const checkExistAccount = username => {
+	const checkUsername = db.query('SELECT * FROM users WHERE username=$1', [
+		username,
+	]);
+	return new Promise((resolve, reject) => {
+		resolve(checkUsername);
+	});
+};
+
+export const create = values => {
 	return new Promise((resolve, reject) => {
 		const inserData = `INSERT INTO
             users(username, password)
@@ -21,6 +30,7 @@ const create = values => {
 
 const exportModels = {
 	findAll,
+	checkExistAccount,
 	create,
 };
 

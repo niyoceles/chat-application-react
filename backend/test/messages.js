@@ -7,11 +7,15 @@ chai.use(chaiHttp);
 describe('Messages', () => {
 	// Consts
 	const message = {
-		sender: 'niyoceles',
-		receiver: 'niyoceles3',
+		sender: 'wacelesd',
+		receiver: 'test2d',
 		message: 'Hello',
 	};
 
+	const getMessage = {
+		sender: 'waceles',
+		receiver: 'test2',
+	};
 	/*
 	 * Test for /GET
 	 */
@@ -20,6 +24,7 @@ describe('Messages', () => {
 			chai
 				.request(server)
 				.get('/api/messages')
+				.send(getMessage)
 				.end((err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('array');
@@ -37,6 +42,7 @@ describe('Messages', () => {
 				.post('/api/messages')
 				.send(message)
 				.end((err, res) => {
+					console.log(res.body);
 					res.should.have.status(201);
 					res.body.should.be.a('object');
 					res.body.should.have.property('sender');
