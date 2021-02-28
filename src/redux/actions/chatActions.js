@@ -9,7 +9,6 @@ import {
 	GET_ALL_USERS_SUCCESS,
 } from '../types';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 const { REACT_APP_BACKEND } = process.env;
 
 axios.defaults.headers.common['Authorization'] =
@@ -22,8 +21,6 @@ export const sendChatMessage = newMessage => dispatch => {
 		.post(`${REACT_APP_BACKEND}/message`, newMessage)
 		.then(res => {
 			dispatch({ type: ADD_CHAT, payload: res.data });
-			toast.success('message send');
-			// dispatch(clearErrors());
 		})
 		.catch(err => {
 			dispatch({

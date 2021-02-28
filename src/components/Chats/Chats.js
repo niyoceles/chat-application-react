@@ -18,7 +18,7 @@ const Chat = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const data = {
-			receiver: 'waceles',
+			// receiver: 'waceles',
 			sender: toUser[2],
 		};
 		dispatch(getMyChats(data));
@@ -29,7 +29,6 @@ const Chat = () => {
 
 		if (message) {
 			const newMessage = {
-				sender: 'waceles',
 				receiver: toUser[2],
 				message,
 			};

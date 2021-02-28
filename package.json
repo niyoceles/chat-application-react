@@ -15,7 +15,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-scroll-to-bottom": "^4.1.0",
-    "react-toastify": "^7.0.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "web-vitals": "^1.0.1"
@@ -26,7 +25,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://chatapp.api.niyonsaba.com",
   "eslintConfig": {
     "extends": [
       "react-app",
