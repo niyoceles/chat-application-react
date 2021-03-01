@@ -6,6 +6,7 @@ import './chat.css';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMyChats, sendChatMessage } from '../../redux/actions';
+import AppLayout from '../../layout/AppLayout';
 
 const Chat = () => {
 	const path = window.location.pathname;
@@ -36,12 +37,11 @@ const Chat = () => {
 			setMessage('');
 		}
 	};
-	if (!localStorage.getItem('IdToken')) {
+	if (!localStorage.IdToken) {
 		return <Redirect to='/' />;
 	}
-
 	return (
-		<div className='cover-container'>
+		<AppLayout>
 			<div className='container'>
 				<TopBar title={toUser[2]} />
 				{messages && messages ? <Messages messages={messages} /> : <Messages />}
@@ -51,7 +51,7 @@ const Chat = () => {
 					sendMessage={sendMessage}
 				/>
 			</div>
-		</div>
+		</AppLayout>
 	);
 };
 

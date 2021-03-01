@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthLayout from '../../layout/AuthLayout';
+import AppLayout from '../../layout/AppLayout';
 import { loginUser } from '../../redux/actions';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,8 +37,11 @@ export default function Login() {
 		return <Redirect to='/users' />;
 	}
 
+	if (localStorage.IdToken) {
+		return <Redirect to='/users' />;
+	}
 	return (
-		<AuthLayout>
+		<AppLayout>
 			<div className='auth-container'>
 				<h1 className='heading'>Login </h1>
 				<form className='login-form'>
@@ -97,6 +100,6 @@ export default function Login() {
 					</Link>
 				</p>
 			</div>
-		</AuthLayout>
+		</AppLayout>
 	);
 }

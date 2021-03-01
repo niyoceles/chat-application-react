@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../redux/actions';
 import Logout from '../Auth/Logout';
+import AppLayout from '../../layout/AppLayout';
 
 const Users = () => {
 	const usersList = useSelector(state => state.chat.allUsers);
@@ -18,7 +19,7 @@ const Users = () => {
 		return <Redirect to='/' />;
 	}
 	return (
-		<div className='cover-container'>
+		<AppLayout>
 			<div className='container'>
 				<div className='top-bar'>
 					<div className='left-container'>
@@ -27,18 +28,27 @@ const Users = () => {
 					<Logout />
 				</div>
 				<ScrollToBottom className='users'>
-					<ul className='circle'>
-						{usersList.map((i, index) => (
-							<Link to={`/chat/${i.username}`} className='link' key={index}>
-								<div key={i} className='user'>
-									<li>{i.username}</li>
-								</div>
-							</Link>
-						))}
-					</ul>
+					{usersList && usersList ? (
+						<ul className='circle'>
+							{usersList.map((i, index) => (
+								<Link to={`/chat/${i.username}`} className='link' key={index}>
+									<div key={i} className='user'>
+										<li>{i.username}</li>
+									</div>
+								</Link>
+							))}{' '}
+						</ul>
+					) : (
+						<>
+							<br />
+							<div className='pl-8 paragraph'>
+								<p>No other user to chat </p>
+							</div>
+						</>
+					)}
 				</ScrollToBottom>
 			</div>
-		</div>
+		</AppLayout>
 	);
 };
 

@@ -56,7 +56,6 @@ export const setAuthorization = data => {
 };
 
 export const logoutUser = () => dispatch => {
-	console.log('LOGOUT');
 	// set logout on backend later
 	localStorage.removeItem('IdToken');
 	localStorage.removeItem('userInfo');

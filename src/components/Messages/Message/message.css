@@ -1,7 +1,7 @@
 .message-box {
   background: #F3F3F3;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 2px 6px;
   color: white;
   display: inline-block;
   max-width: 80%;
@@ -15,9 +15,13 @@
   word-wrap: break-word;
 }
 
-.message-text img {
-  vertical-align: middle;
+.sent-time {
+  width: 100%;
+  letter-spacing: 0;
+  float: left;
+  font-size: 10px;
 }
+
 
 .message-container {
   display: flex;

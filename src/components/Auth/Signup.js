@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthLayout from '../../layout/AuthLayout';
+import AppLayout from '../../layout/AppLayout';
 
 import { signupUser } from '../../redux/actions';
 import { Redirect } from 'react-router-dom';
@@ -45,8 +45,12 @@ export default function Signup() {
 		return <Redirect to='/users' />;
 	}
 
+	if (localStorage.IdToken) {
+		return <Redirect to='/users' />;
+	}
+
 	return (
-		<AuthLayout>
+		<AppLayout>
 			<div className='auth-container'>
 				<h1 className='heading'>Create an account</h1>
 				<form>
@@ -112,9 +116,13 @@ export default function Signup() {
 					<span className='validation-error'>password are not matching</span>
 				) : null}
 				<p className='paragraph'>
-					Have an account? <Link to='/' className='links'> Login</Link>
+					Have an account?{' '}
+					<Link to='/' className='links'>
+						{' '}
+						Login
+					</Link>
 				</p>
 			</div>
-		</AuthLayout>
+		</AppLayout>
 	);
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AuthLayout from '../../layout/AuthLayout';
+import AppLayout from '../../layout/AppLayout';
 
 const title = 'Chat one on one Application';
 
-let wrapped = shallow(<AuthLayout>{title}</AuthLayout>);
+let wrapped = shallow(<AppLayout>{title}</AppLayout>);
 
-describe('AuthLayout', () => {
-	it('should render the AuthLayout Component correctly', () => {
+describe('AppLayout', () => {
+	it('should render the AppLayout Component correctly', () => {
 		expect(wrapped).toHaveLength(1);
 	});
-	it('renders the AuthLayouts children', () => {
+	it('renders the AppLayouts children', () => {
 		expect(wrapped.find('h1').text()).toEqual(title);
 	});
 });

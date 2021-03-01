@@ -1,5 +1,6 @@
 import React from 'react';
-
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 import Chat from './components/Chats/Chats';
 import { Provider } from 'react-redux';
 import store from './redux/store/index';
@@ -8,6 +9,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Users from './components/Users/Users';
+
+import { SET_AUTHENTICATED } from '../src/redux/types';
+import { logoutUser } from '../src/redux/actions';
+
+const token = localStorage.IdToken;
+if (token) {
+	const decodedToken = jwtDecode(token);
+	if (decodedToken.exp * 1000 < Date.now()) {
+		store.dispatch(logoutUser());
+		window.location.href = '/';
+	} else {
+		store.dispatch({ type: SET_AUTHENTICATED });
+		axios.defaults.headers.common['Authorization'] = token;
+	}
+}
+
 const App = () => {
 	return (
 		<Provider store={store}>

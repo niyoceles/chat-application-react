@@ -12,7 +12,7 @@ html, body {
   box-sizing: border-box;
 }
 
-.auth-main {
+.main-app {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -68,7 +68,7 @@ html, body {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .auth-main {
+  .main-app {
     height: 83.8vh;
   }
 
@@ -78,7 +78,7 @@ html, body {
 }
 
 @media (min-width: 375px) and (max-width: 480px) {
-  .auth-main {
+  .main-app {
     height: 89.3vh;
   }
 
