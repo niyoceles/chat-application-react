@@ -41,7 +41,6 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				signupFailure: action.payload,
-				signupSuccess: null,
 				signupData: null,
 			};
 		case LOGIN_REQUEST:

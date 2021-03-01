@@ -19,6 +19,7 @@ export default function Signup() {
 	// const submitData = useSelector(state => state.auth.signupData);
 	const signupFailure = useSelector(state => state.auth.signupFailure);
 	const signupSuccess = useSelector(state => state.auth.signupSuccess);
+	console.log('SSSSSS' ,signupSuccess);
 
 	const dispatch = useDispatch();
 
@@ -30,12 +31,16 @@ export default function Signup() {
 	const createAccount = e => {
 		e.preventDefault();
 		setSubmitted(true);
+		const data = {
+			username: user.username,
+			password: user.password,
+		};
 		if (
 			user.password &&
 			user.username &&
 			user.password === user.confirmPassword
 		) {
-			dispatch(signupUser(user));
+			dispatch(signupUser(data));
 		}
 
 		// setUser({ username: '', password: '', confirmPassword: '' });
@@ -111,6 +116,9 @@ export default function Signup() {
 				</form>
 				{signupFailure && (
 					<span className='validation-error'>{signupFailure}</span>
+				)}
+				{signupSuccess && (
+					<span className='validation-error'>{signupSuccess}</span>
 				)}
 				{submitted && user.password !== user.confirmPassword ? (
 					<span className='validation-error'>password are not matching</span>

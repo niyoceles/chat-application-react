@@ -8,7 +8,7 @@ import {
 	LOGIN_FAILURE,
 	SET_UNAUTHENTICATED,
 	LOADING_UI,
-	STOP_LOADING_UI
+	STOP_LOADING_UI,
 } from '../types';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -23,7 +23,7 @@ export const loginUser = loginData => dispatch => {
 		.then(res => {
 			setAuthorization(res.data);
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-			dispatch({ type: STOP_LOADING_UI })
+			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch(err => {
 			dispatch({
@@ -42,7 +42,10 @@ export const signupUser = signupData => dispatch => {
 			dispatch({ type: REGISTER_SUCCESS, payload: res.data.message });
 		})
 		.catch(err => {
-			dispatch({ type: REGISTER_FAILURE, payload: err.response });
+			dispatch({
+				type: REGISTER_FAILURE,
+				payload: err.response ? err.response.data.error || err.response.data.errors[0].message : null,
+			});
 		});
 };
 

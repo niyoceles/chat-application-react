@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { logoutUser } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -8,10 +8,13 @@ export default function Logout() {
 
 	const handleLogout = () => {
 		dispatch(logoutUser());
+	};
+
+	useEffect(() => {
 		if (!localStorage.IdToken) {
 			return <Redirect to='/' />;
 		}
-	};
+	}, [dispatch]);
 
 	return (
 		<div className='left-container'>
