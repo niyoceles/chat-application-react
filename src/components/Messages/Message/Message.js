@@ -28,7 +28,7 @@ const Message = ({ message: { message, receiver, createdAt } }) => {
 		<div className='message-container justify-start'>
 			<div className='message-box background-light'>
 				<p className='message-text color-dark'>{message}</p>
-				<p className='sent-time color-white'>{dayjs(createdAt).fromNow()}</p>
+				<p className='sent-time color-dark'>{dayjs(createdAt).fromNow()}</p>
 			</div>
 		</div>
 	);
