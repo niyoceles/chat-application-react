@@ -29,7 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "coverage": "npm test -- --coverage",
+    "coverage": "CI=true npm test -- --coverage",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -38,7 +38,9 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
-      "!src/index.js"
+      "!src/index.js",
+      "!src/reportWebVitals.js",
+      "!src/setupTests.js"
     ],
     "coverageReporters": [
       "text"
