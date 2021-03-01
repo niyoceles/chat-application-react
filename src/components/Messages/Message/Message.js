@@ -30,7 +30,6 @@ const Message = ({ message: { message, receiver, createdAt } }) => {
 				<p className='message-text color-dark'>{message}</p>
 				<p className='sent-time color-white'>{dayjs(createdAt).fromNow()}</p>
 			</div>
-			<p className='sent-text pl-8 '>{receiver}</p>
 		</div>
 	);
 };
