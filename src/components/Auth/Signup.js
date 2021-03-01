@@ -48,7 +48,7 @@ export default function Signup() {
 	return (
 		<AuthLayout>
 			<div className='auth-container'>
-				<h1 className='heading'>Create an Account</h1>
+				<h1 className='heading'>Create an account</h1>
 				<form>
 					<div>
 						<input
@@ -112,7 +112,7 @@ export default function Signup() {
 					<span className='validation-error'>password are not matching</span>
 				) : null}
 				<p className='paragraph'>
-					Have an account? <Link to='/'> Login</Link>
+					Have an account? <Link to='/' className='links'> Login</Link>
 				</p>
 			</div>
 		</AuthLayout>

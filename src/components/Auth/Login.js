@@ -90,7 +90,11 @@ export default function Login() {
 				)}
 				<br />
 				<p className='paragraph'>
-					Don't have an account? <Link to='/signup'> Signup</Link>
+					Don't have an account?{' '}
+					<Link to='/signup' className='links'>
+						{' '}
+						Signup
+					</Link>
 				</p>
 			</div>
 		</AuthLayout>
