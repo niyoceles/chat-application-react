@@ -41,7 +41,7 @@ export default function Login() {
 		<AuthLayout>
 			<div className='auth-container'>
 				<h1 className='heading'>Login </h1>
-				<form>
+				<form className='login-form'>
 					<div>
 						<input
 							placeholder='username'
