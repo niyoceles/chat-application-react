@@ -5,7 +5,7 @@
 ## Description
 Build, test and deploy a one to one chat application using React/Redux, Node.js, and PostgreSQL
 
-## Link to the app final product Click [here](https://www.chatapp.niyonsaba.com/)
+## Link to the final product click [here](https://www.chatapp.niyonsaba.com/)
 #### Login & create an account account (for new user)
 ![image](https://user-images.githubusercontent.com/30776949/109550916-8fdbbf80-7ad8-11eb-9bc1-ac688511834a.png)
 

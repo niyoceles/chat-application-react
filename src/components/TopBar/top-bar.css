@@ -6,6 +6,7 @@
   border-radius: 4px 4px 0 0;
   height: 60px;
   width: 100%;
+  z-index: 999;
 }
 
 .left-container {
@@ -19,3 +20,9 @@
 .back-button {
   margin-right: 5%;
 }
+
+.button.clickable {
+  cursor: pointer !important;
+  z-index: 999;
+}
+
