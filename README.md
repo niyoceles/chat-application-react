@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/niyoceles/chat-application-frontend.svg?style=svg)](https://circleci.com/gh/niyoceles/chat-application-frontend)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/92a4573e6b285fff0982/test_coverage)](https://codeclimate.com/github/niyoceles/chat-application-frontend/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/92a4573e6b285fff0982/maintainability)](https://codeclimate.com/github/niyoceles/chat-application-frontend/maintainability)
 # chat-application.
