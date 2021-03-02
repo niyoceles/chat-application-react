@@ -8,10 +8,12 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "babel-jest": "^26.6.3",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "^26.6.3",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -28,23 +30,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "coverage": "CI=true npm test -- --coverage",
+    "test": "jest -w 1",
+    "test:cov": "jest -w 1 \"-- --coverage\"",
+    "test:watch": "jest --watchAll",
     "eject": "react-scripts eject"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/index.js",
-      "!src/reportWebVitals.js",
-      "!src/setupTests.js"
-    ],
-    "coverageReporters": [
-      "text"
-    ]
   },
   "eslintConfig": {
     "extends": [
@@ -65,7 +54,10 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.20",
     "enzyme-to-json": "^3.6.1",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "ts-jest": "^26.5.2"
   }
 }
