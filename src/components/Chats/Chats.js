@@ -15,11 +15,11 @@ const Chat = () => {
 	const [message, setMessage] = useState('');
 
 	const messages = useSelector(state => state.chat.allChats);
+	const error = useSelector(state => state.ui.error);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
 		const data = {
-			// receiver: 'waceles',
 			sender: toUser[2],
 		};
 		dispatch(getMyChats(data));
@@ -44,7 +44,7 @@ const Chat = () => {
 		<AppLayout>
 			<div className='container'>
 				<TopBar title={toUser[2]} />
-				{messages && messages ? <Messages messages={messages} /> : <Messages />}
+				{messages && messages ? <Messages messages={messages} error={error} /> : <Messages />}
 				<Input
 					message={message}
 					setMessage={setMessage}

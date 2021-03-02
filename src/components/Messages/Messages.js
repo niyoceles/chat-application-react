@@ -4,7 +4,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 import Message from './Message/Message';
 
-const Messages = ({ messages }) => (
+const Messages = ({ messages, error }) => (
 	<ScrollToBottom className='messages'>
 		{messages === 'You have no message!' ? (
 			<p className='pl-8 paragraph'>{messages}</p>
@@ -15,6 +15,7 @@ const Messages = ({ messages }) => (
 				</div>
 			))
 		)}
+		<span className='validation-error'>{error ? error : null}</span>
 	</ScrollToBottom>
 );
 

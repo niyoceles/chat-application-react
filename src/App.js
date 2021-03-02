@@ -10,7 +10,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Users from './components/Users/Users';
 
-import { SET_AUTHENTICATED } from '../src/redux/types';
+import { LOGIN_SUCCESS, SET_AUTHENTICATED } from '../src/redux/types';
 import { logoutUser } from '../src/redux/actions';
 
 const token = localStorage.IdToken;
@@ -21,6 +21,10 @@ if (token) {
 		window.location.href = '/';
 	} else {
 		store.dispatch({ type: SET_AUTHENTICATED });
+		store.dispatch({
+			type: LOGIN_SUCCESS,
+			payload: { ...decodedToken, token },
+		});
 		axios.defaults.headers.common['Authorization'] = token;
 	}
 }

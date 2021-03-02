@@ -7,8 +7,6 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAILURE,
 	SET_UNAUTHENTICATED,
-	LOADING_UI,
-	STOP_LOADING_UI,
 } from '../types';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -16,14 +14,12 @@ import jwtDecode from 'jwt-decode';
 const { REACT_APP_BACKEND } = process.env;
 
 export const loginUser = loginData => dispatch => {
-	dispatch({ type: LOADING_UI });
 	dispatch({ type: LOGIN_REQUEST, payload: loginData });
 	axios
 		.post(`${REACT_APP_BACKEND}/users/login`, loginData)
 		.then(res => {
 			setAuthorization(res.data);
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-			dispatch({ type: STOP_LOADING_UI });
 		})
 		.catch(err => {
 			dispatch({
@@ -42,9 +38,14 @@ export const signupUser = signupData => dispatch => {
 			dispatch({ type: REGISTER_SUCCESS, payload: res.data.message });
 		})
 		.catch(err => {
+			console.log('dddd', err.response.data.message);
 			dispatch({
 				type: REGISTER_FAILURE,
-				payload: err.response ? err.response.data.error || err.response.data.errors[0].message : null,
+				payload: err.response
+					? err.response.data.error ||
+					  err.response.data.errors[0].message ||
+					  err.response.data.message
+					: null,
 			});
 		});
 };

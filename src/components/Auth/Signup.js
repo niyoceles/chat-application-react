@@ -19,7 +19,6 @@ export default function Signup() {
 	// const submitData = useSelector(state => state.auth.signupData);
 	const signupFailure = useSelector(state => state.auth.signupFailure);
 	const signupSuccess = useSelector(state => state.auth.signupSuccess);
-	console.log('SSSSSS' ,signupSuccess);
 
 	const dispatch = useDispatch();
 
@@ -42,8 +41,6 @@ export default function Signup() {
 		) {
 			dispatch(signupUser(data));
 		}
-
-		// setUser({ username: '', password: '', confirmPassword: '' });
 	};
 
 	if (signupSuccess) {
@@ -58,7 +55,7 @@ export default function Signup() {
 		<AppLayout>
 			<div className='auth-container'>
 				<h1 className='heading'>Create an account</h1>
-				<form>
+				<form className='signup-form'>
 					<div>
 						<input
 							placeholder='username'
