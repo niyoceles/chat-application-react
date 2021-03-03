@@ -48,7 +48,7 @@ Start by cloning the repository to your local machine
 ```bash
 git clone https://github.com/niyoceles/chat-application-frontend.git
 
-cd chat-application-backend
+cd chat-application-frontend
 ```
 ### Config your database & .env
 REACT_APP_BACKEND=

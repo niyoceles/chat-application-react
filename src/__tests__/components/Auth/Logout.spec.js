@@ -1,22 +1,31 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
-import Logout from '../../../components/Auth/Logout';
+import "@testing-library/jest-dom";
+import React from "react";
+import { Provider } from "react-redux";
+import promiseMiddleware from "redux-promise-middleware";
+import thunk from "redux-thunk";
+import configureMockStore from "redux-mock-store";
+import { render, screen, fireEvent } from "@testing-library/react";
+import Logout from "../../../components/Auth/Logout";
 
 const middlewares = [thunk, promiseMiddleware];
 const mockStore = configureMockStore(middlewares);
-const store = mockStore({});
+const store = mockStore({
+  auth: { loginData: null },
+});
 
-describe('testing Logout component', () => {
-	test('should render Logout component', () => {
-		const wrapper = shallow(
-			<Provider store={store}>
-				<Logout />
-			</Provider>
-		);
-		expect(wrapper).toHaveLength(1);
-	});
+describe("render logout  form", () => {
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <Logout />
+      </Provider>
+    );
+  });
+  test("should render logout component", () => {
+    expect(screen.getByText("Logout")).toBeInTheDocument();
+  });
+  test("should submit logout form", () => {
+    fireEvent.click(screen.getByText("Logout"));
+    expect(screen.getByText("Logout")).toBeInTheDocument();
+  });
 });

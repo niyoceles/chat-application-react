@@ -2,6 +2,7 @@ import 'dotenv/config';
 import {
 	SET_ERRORS,
 	ADD_CHAT,
+	LOADING_UI,
 	GET_ALL_CHATS_FAILURE,
 	GET_ALL_CHATS_SUCCESS,
 	GET_ALL_USERS_FAILURE,
@@ -15,6 +16,7 @@ axios.defaults.headers.common['Authorization'] =
 
 // Post a message
 export const sendChatMessage = newMessage => dispatch => {
+	dispatch({ type: LOADING_UI });
 	axios
 		.post(`${REACT_APP_BACKEND}/message`, newMessage)
 		.then(res => {
@@ -23,7 +25,7 @@ export const sendChatMessage = newMessage => dispatch => {
 		.catch(err => {
 			dispatch({
 				type: SET_ERRORS,
-				payload: err.response ? err.response.data.error || err.response.data.message : null,
+				payload: err.response ? err.response.data.error : null,
 			});
 		});
 };
