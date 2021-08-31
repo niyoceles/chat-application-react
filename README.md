@@ -20,7 +20,7 @@ Build, test and deploy a one to one chat application using React/Redux, Node.js,
 ### Github Repositories
 
 #### This repository is for Frontend
-#### Backend repository Click [here](https://github.com/niyoceles/chat-application-backend).
+#### Backend repository Click [here](https://github.com/niyoceles/chat-application-nodejs).
 
 # Tools and Technologies:
 ## FRONTEND:
@@ -46,9 +46,9 @@ The following should be installed in your machine:
 Start by cloning the repository to your local machine
 
 ```bash
-git clone https://github.com/niyoceles/chat-application-frontend.git
+git clone https://github.com/niyoceles/chat-application-react.git
 
-cd chat-application-frontend
+cd chat-application-react
 ```
 ### Config your database & .env
 REACT_APP_BACKEND=
